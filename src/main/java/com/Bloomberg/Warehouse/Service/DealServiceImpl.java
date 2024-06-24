@@ -7,6 +7,7 @@ import com.bloomberg.model.DealResponseDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import static com.Bloomberg.Warehouse.mapper.DealMapper.INSTANCEMapper;
 
@@ -20,6 +21,7 @@ public class DealServiceImpl implements DealService {
 
 
     @Override
+    @Transactional(noRollbackFor = {RuntimeException.class})
     public DealResponseDto createDeal(DealRequestDto dealRequestDto) {
         log.info("Creating FX Deal");
         return INSTANCEMapper.EntityToDto(dealRepository.save(INSTANCEMapper.DtoToEntity(dealRequestDto)));
