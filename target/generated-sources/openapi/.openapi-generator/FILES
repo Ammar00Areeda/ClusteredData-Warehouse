@@ -1,8 +1,0 @@
-.openapi-generator-ignore
-README.md
-pom.xml
-src/main/java/com/bloomberg/controller/ApiUtil.java
-src/main/java/com/bloomberg/controller/DealApi.java
-src/main/java/com/bloomberg/model/ApiErrorResponseDto.java
-src/main/java/com/bloomberg/model/DealRequestDto.java
-src/main/java/com/bloomberg/model/DealResponseDto.java
