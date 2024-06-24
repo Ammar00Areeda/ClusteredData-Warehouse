@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  postgres:
+    image: postgres:14-alpine
+    restart: always
+    container_name: warehouse-postgres
+    networks:
+      - spring_postgres-network
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+      - POSTGRES_USER=fx
+      - POSTGRES_DB=fx
+
+  warehouse_app:
+    image: 'fx:latest'
+    restart: always
+    build:
+      context: .
+    container_name: fx
+    networks:
+      - spring_postgres-network
+    ports:
+      - 8000:8080
+    depends_on:
+      - postgres
+    environment:
+      - SERVER_PORT=8000
+      - MANAGEMENT_PORT=8001
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_NAME=fx
+      - DB_USERNAME=fx
+
+networks:
+  spring_postgres-network:
