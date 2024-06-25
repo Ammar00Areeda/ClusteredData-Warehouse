@@ -17,7 +17,7 @@ public class ApiTest {
     }
 
     @Test
-    public void testCreateProduct() {
+    public void testCreateDeal() {
         String requestBody = "{\n" +
                 "  \"fromCurrencyISOCode\": \"JOD\",\n" +
                 "  \"toCurrencyISOCode\": \"EUR\",\n" +
@@ -35,7 +35,7 @@ public class ApiTest {
                         .body("dealAmount", equalTo(10000));
     }
     @Test
-    public void testCreateProductWithInvalidCurrencySameFromAndTo() {
+    public void testCreateDealWithInvalidCurrencySameFromAndTo() {
         String requestBody = "{\n" +
                 "  \"fromCurrencyISOCode\": \"EUR\",\n" +
                 "  \"toCurrencyISOCode\": \"EUR\",\n" +
@@ -51,7 +51,7 @@ public class ApiTest {
                         .body("message", containsString("From and To currency cannot be the same"));
     }
     @Test
-    public void testCreateProductWithInvalidAmount() {
+    public void testCreateDealWithInvalidAmount() {
         String requestBody = "{\n" +
                 "  \"fromCurrencyISOCode\": \"JOD\",\n" +
                 "  \"toCurrencyISOCode\": \"EUR\",\n" +
@@ -67,7 +67,7 @@ public class ApiTest {
                 .body("message", containsString("Amount cannot be null or empty"));
     }
     @Test
-    public void testCreateProductWithInvalidCurrencyNull() {
+    public void testCreateDealWithInvalidCurrencyNull() {
         String requestBody = "{\n" +
                 "  \"fromCurrencyISOCode\": \"JOD\",\n" +
                 "  \"dealAmount\": 1230\n" +
@@ -82,7 +82,7 @@ public class ApiTest {
                 .body("message", containsString("To currency is required"));
     }
     @Test
-    public void testCreateProductWithInvalidCurrencyEmpty() {
+    public void testCreateDealWithInvalidCurrencyEmpty() {
         String requestBody = "{\n" +
                 "  \"fromCurrencyISOCode\": \"\",\n" +
                 "  \"toCurrencyISOCode\": \"EUR\",\n" +
@@ -98,7 +98,7 @@ public class ApiTest {
                 .body("message", containsString("From currency is required"));
     }
     @Test
-    public void testCreateProductWithInvalidCurrencyISOCode() {
+    public void testCreateDealWithInvalidCurrencyISOCode() {
         String requestBody = "{\n" +
                 "  \"fromCurrencyISOCode\": \"qwer\",\n" +
                 "  \"toCurrencyISOCode\": \"EUR\",\n" +

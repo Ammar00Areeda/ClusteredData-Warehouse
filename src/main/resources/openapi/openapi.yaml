@@ -35,8 +35,12 @@ components:
         - fromCurrencyISOCode
         - toCurrencyISOCode
         - dealAmount
+        - dealId
       type: object
       properties:
+        dealId:
+          type: integer
+          format: int64
         fromCurrencyISOCode:
           type: string
         toCurrencyISOCode:
@@ -50,6 +54,9 @@ components:
       type: object
       properties:
         id:
+          type: integer
+          format: int64
+        dealId:
           type: integer
           format: int64
         fromCurrencyISOCode:
