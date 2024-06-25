@@ -13,6 +13,19 @@ services:
       - POSTGRES_USER=fx
       - POSTGRES_DB=fx
 
+  postgres-test:
+    image: postgres:14-alpine
+    restart: always
+    container_name: warehouse-postgres-test
+    networks:
+      - spring_postgres-network
+    ports:
+      - 5433:5432
+    environment:
+      - POSTGRES_HOST_AUTH_METHOD=trust
+      - POSTGRES_USER=fx
+      - POSTGRES_DB=fx_test
+
   warehouse_app:
     image: 'fx:latest'
     restart: always
@@ -22,11 +35,12 @@ services:
     networks:
       - spring_postgres-network
     ports:
-      - 8000:8080
+      - 8090:8090
     depends_on:
       - postgres
+      - postgres-test
     environment:
-      - SERVER_PORT=8000
+      - SERVER_PORT=8090
       - MANAGEMENT_PORT=8001
       - DB_HOST=postgres
       - DB_PORT=5432

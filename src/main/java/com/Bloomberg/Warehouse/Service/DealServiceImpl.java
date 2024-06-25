@@ -1,12 +1,12 @@
 package com.Bloomberg.Warehouse.Service;
 
+import com.Bloomberg.Warehouse.dto.DealRequestDto;
+import com.Bloomberg.Warehouse.dto.DealResponseDto;
 import com.Bloomberg.Warehouse.exception.DealAlreadyExistException;
 import com.Bloomberg.Warehouse.repository.DealRepository;
 import com.Bloomberg.Warehouse.validator.AmountValidator;
 import com.Bloomberg.Warehouse.validator.DealIdValidator;
 import com.Bloomberg.Warehouse.validator.ISOCodeValidator;
-import com.bloomberg.model.DealRequestDto;
-import com.bloomberg.model.DealResponseDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

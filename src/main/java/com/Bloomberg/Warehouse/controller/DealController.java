@@ -2,9 +2,8 @@ package com.Bloomberg.Warehouse.controller;
 
 
 import com.Bloomberg.Warehouse.Service.DealService;
-import com.bloomberg.controller.DealApi;
-import com.bloomberg.model.DealRequestDto;
-import com.bloomberg.model.DealResponseDto;
+import com.Bloomberg.Warehouse.dto.DealRequestDto;
+import com.Bloomberg.Warehouse.dto.DealResponseDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

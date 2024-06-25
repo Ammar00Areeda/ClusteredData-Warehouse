@@ -1,8 +1,8 @@
 package com.Bloomberg.Warehouse.Service;
 
 
-import com.bloomberg.model.DealRequestDto;
-import com.bloomberg.model.DealResponseDto;
+import com.Bloomberg.Warehouse.dto.DealRequestDto;
+import com.Bloomberg.Warehouse.dto.DealResponseDto;
 
 public interface DealService {
      DealResponseDto createDeal(DealRequestDto fxDealRequestDto);
