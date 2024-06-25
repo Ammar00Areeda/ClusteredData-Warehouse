@@ -15,7 +15,7 @@ public class ISOCodeValidator {
             throw new InvalidISOCodeException("From and To currency cannot be the same");
         }
 
-        if(Objects.isNull(fromCurrency)){
+        if(Objects.isNull(fromCurrency) || fromCurrency.isEmpty()){
             throw new InvalidISOCodeException("From currency is required");
         }
         if(Objects.isNull(toCurrency)){
