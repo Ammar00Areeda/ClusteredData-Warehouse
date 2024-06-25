@@ -44,4 +44,15 @@ public class GlobalApiExceptionHandler extends ResponseEntityExceptionHandler {
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
     }
+
+    @ExceptionHandler(DealAlreadyExistException.class)
+    public ResponseEntity<Object> handleDealAlreadyExistException(DealAlreadyExistException ex) {
+        ApiErrorResponseDto response = ApiErrorResponseDto.builder()
+                .message(ex.getMessage())
+                .timestamp(DateUtils.offsetDateTimeNowUtc())
+                .errors(Collections.singletonList("Deal already exists"))
+                .build();
+
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(response);
+    }
 }

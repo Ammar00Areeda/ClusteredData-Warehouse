@@ -1,6 +1,7 @@
 package com.Bloomberg.Warehouse.entity;
 
 import jakarta.persistence.*;
+import jdk.jfr.Description;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -28,8 +29,11 @@ public class DealEntity {
     private LocalDateTime dealTimestamp;
 
     @Column(name = "deal_amount")
+    @Description("Deal Amount in ordering currency")
     private BigDecimal dealAmount;
 
+    @Column(name = "checksum")
+    private String checksum;
 
     @PrePersist
     protected void onCreate() {

@@ -8,8 +8,11 @@ import java.util.Currency;
 import java.util.Objects;
 
 @Component
+@Slf4j
 public class ISOCodeValidator {
     public void validate(String fromCurrency, String toCurrency) {
+
+        log.info("Validating ISO Codes");
 
         if (Objects.equals(fromCurrency, toCurrency)){
             throw new InvalidISOCodeException("From and To currency cannot be the same");
@@ -28,6 +31,7 @@ public class ISOCodeValidator {
         } catch (IllegalArgumentException ex) {
             throw new InvalidISOCodeException("ISO Code is not valid");
         }
+        log.info("ISO Codes are valid");
 
     }
 }
