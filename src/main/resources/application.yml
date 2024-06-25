@@ -6,4 +6,6 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
-      ddl-auto: none # todo: set to validate
+      ddl-auto: none
+  swagger-ui:
+    enabled: true

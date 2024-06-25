@@ -18,7 +18,7 @@ public class ISOCodeValidator {
         if(Objects.isNull(fromCurrency) || fromCurrency.isEmpty()){
             throw new InvalidISOCodeException("From currency is required");
         }
-        if(Objects.isNull(toCurrency)){
+        if(Objects.isNull(toCurrency) || toCurrency.isEmpty()){
             throw new InvalidISOCodeException("To currency is required");
         }
 
