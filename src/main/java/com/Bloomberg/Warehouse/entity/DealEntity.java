@@ -17,6 +17,9 @@ public class DealEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "deal_id")
+    private Long dealId;
+
     @Column(name = "from_currency_ISO_code")
     private String fromCurrencyISOCode;
 
@@ -31,9 +34,6 @@ public class DealEntity {
     @Column(name = "deal_amount")
     @Description("Deal Amount in ordering currency")
     private BigDecimal dealAmount;
-
-    @Column(name = "checksum")
-    private String checksum;
 
     @PrePersist
     protected void onCreate() {
