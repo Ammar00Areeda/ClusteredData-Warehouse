@@ -1,8 +1,8 @@
 package com.Bloomberg.Warehouse.exception;
 
 
+import com.Bloomberg.Warehouse.dto.ApiErrorResponseDto;
 import com.Bloomberg.Warehouse.util.DateUtils;
-import com.bloomberg.model.ApiErrorResponseDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
