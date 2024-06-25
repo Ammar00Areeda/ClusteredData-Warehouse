@@ -1,8 +1,8 @@
 package com.Bloomberg.Warehouse.Service;
 
 import com.Bloomberg.Warehouse.repository.DealRepository;
-
 import com.Bloomberg.Warehouse.validator.AmountValidator;
+import com.Bloomberg.Warehouse.validator.ChecksumValidator;
 import com.Bloomberg.Warehouse.validator.ISOCodeValidator;
 import com.bloomberg.model.DealRequestDto;
 import com.bloomberg.model.DealResponseDto;
@@ -21,15 +21,16 @@ public class DealServiceImpl implements DealService {
     private final DealRepository dealRepository;
     private final AmountValidator amountValidator;
     private final ISOCodeValidator isoCodeValidator;
+    private final ChecksumValidator checksumValidator;
 
     @Override
     @Transactional(noRollbackFor = {RuntimeException.class})
     public DealResponseDto createDeal(DealRequestDto dealRequestDto) {
-        log.info("Validating Amount");
+
+        checksumValidator.isValidChecksum(dealRequestDto, dealRepository);
         amountValidator.validateAmount(dealRequestDto.getDealAmount());
-        log.info("Validating ISO Codes");
         isoCodeValidator.validate(dealRequestDto.getFromCurrencyISOCode(), dealRequestDto.getToCurrencyISOCode());
-        log.info("Creating FX Deal");
+
         return INSTANCEMapper.EntityToDto(dealRepository.save(INSTANCEMapper.DtoToEntity(dealRequestDto)));
     }
 }
