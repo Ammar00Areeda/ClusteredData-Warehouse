@@ -1,92 +1,92 @@
-#openapi: 3.0.3
-#info:
-#  title: ClusteredData-Warehouse
-#  version: 1.0.0
-#servers:
-#  - url: http://localhost:8080
-#
-##  /api/deal:
-##    post:
-##      tags:
-##        - Deal
-##      summary: Insert new deal
-##      operationId: createNewDeal
-##      requestBody:
-##        content:
-##          application/json:
-##            schema:
-##              $ref: "#/components/schemas/DealRequest"
-##        required: true
-##      responses:
-##        201:
-##          description: FXDeal successfully created
-##          content:
-##            application/json:
-##              schema:
-##                $ref: "#/components/schemas/DealResponse"
-##        400:
-##          $ref: "#/components/responses/400Response"
-#components:
-#  schemas:
-##    DealRequest:
-##      description: Deal model for Request.
-##      required:
-##        - fromCurrencyISOCode
-##        - toCurrencyISOCode
-##        - dealAmount
-##        - dealId
-##      type: object
-##      properties:
-##        dealId:
-##          type: integer
-##          format: int64
-##        fromCurrencyISOCode:
-##          type: string
-##        toCurrencyISOCode:
-##          type: string
-##        dealAmount:
-##          type: number
-##          format: double
-##          minimum: 0
-#    DealResponse:
-#      description: Deal model for Response.
-#      type: object
-#      properties:
-#        id:
-#          type: integer
-#          format: int64
-#        dealId:
-#          type: integer
-#          format: int64
-#        fromCurrencyISOCode:
-#          type: string
-#        toCurrencyISOCode:
-#          type: string
-#        dealAmount:
-#          type: number
-#          format: double
-#          minimum: 0
-#        dealTimestamp:
-#          type: string
-#          format: LocalDateTime
-#    ApiErrorResponse:
-#      description: Model for some API errors
-#      type: object
-#      properties:
-#        errors:
-#          type: array
-#          items:
-#            type: string
-#        message:
-#          type: string
-#        timestamp:
-#          type: string
-#          format: date-time
-#  responses:
-#    400Response:
-#      description: Wrong request (not all responses will have specified content model)
-#      content:
-#        application/json:
-#          schema:
-#            $ref: "#/components/schemas/ApiErrorResponse"
-#
+openapi: 3.0.3
+info:
+  title: ClusteredData-Warehouse
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080
+paths:
+  /api/deal:
+    post:
+      tags:
+        - Deal
+      summary: Insert new deal
+      operationId: createNewDeal
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DealRequest"
+        required: true
+      responses:
+        201:
+          description: FXDeal successfully created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DealResponse"
+        400:
+          $ref: "#/components/responses/BadRequestResponse"
+components:
+  schemas:
+    DealRequest:
+      description: Deal model for Request.
+      required:
+        - fromCurrencyISOCode
+        - toCurrencyISOCode
+        - dealAmount
+        - dealId
+      type: object
+      properties:
+        dealId:
+          type: integer
+          format: int64
+        fromCurrencyISOCode:
+          type: string
+        toCurrencyISOCode:
+          type: string
+        dealAmount:
+          type: number
+          format: double
+          minimum: 0
+    DealResponse:
+      description: Deal model for Response.
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        dealId:
+          type: integer
+          format: int64
+        fromCurrencyISOCode:
+          type: string
+        toCurrencyISOCode:
+          type: string
+        dealAmount:
+          type: number
+          format: double
+          minimum: 0
+        dealTimestamp:
+          type: string
+          format: LocalDateTime
+    ApiErrorResponse:
+      description: Model for some API errors
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: string
+        message:
+          type: string
+        timestamp:
+          type: string
+          format: date-time
+  responses:
+    BadRequestResponse:
+      description: Wrong request (not all responses will have specified content model)
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ApiErrorResponse"
+
