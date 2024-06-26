@@ -75,12 +75,19 @@ to run the project in docker you need to follow these steps:
 1. Build the project using the following command:
 ```bash
 mvn clean package -Dmaven.test.skip
-
+```
+or you can use
+```bash
+make build
 ```
 2. To start the Docker Compose services for the Clustered Data Warehouse project, use the following command:
 
 ```bash
 docker-compose -f docker-compose.yaml -p warehouse up -d
+```
+or you can use 
+```bash
+make docker-up
 ```
 The project will be running on http://localhost:8090/
 
@@ -91,8 +98,21 @@ to run the tests you need to Run the following command:
 ```bash
 mvn test
 ```
+or you can use 
+```bash
+make test
+```
 # Troubleshooting
 1. Connection Issues: Verify database credentials and network settings.
 2. Dependency Errors: Check Maven dependencies and versions.
 3. Docker Problems: Ensure Docker is properly installed and running.
 4. IDE Configuration: Check project settings and configurations in your IDE.
+
+# Makefile
+- ![image](src/main/resources/images/makefile.png)
+
+Try make file commands to build, test, and run the project.
+run this commend to help you to know the available commands
+```bash
+make help
+```
